@@ -2,9 +2,28 @@ import os
 import leafmap.foliumap as leafmap
 import streamlit as st
 import palettable
+import geopandas as gpd
 
 
 @st.cache
+def uploaded_file_to_gdf(data):
+    import tempfile
+    import os
+    import uuid
+    _, file_extension = os.path.splitext(data.name)
+    file_id = str(uuid.uuid4())
+    file_path = os.path.join(tempfile.gettempdir(), f"{file_id}{file_extension}")
+    
+    with open(file_path, "wb") as file:
+        file.write(data.getbuffer())
+
+    if file_path.lower().endswith(".kml"):
+        gpd.io.file.fiona.drvsupport.supported_drivers["KML"] = "rw"
+        gdf = gpd.read_file(file_path, driver="KML")
+    else:
+        gdf = gpd.read_file(file_path)
+
+    return gdf
 def load_cog_list():
     print(os.getcwd())
     in_txt = os.path.join(os.getcwd(), "data/cog_files.txt")

@@ -430,6 +430,7 @@ def app():
             m.add_gdf(gdf, "ROI")
 
         elif data:
+            ee.Initialize()
             gdf = uploaded_file_to_gdf(data)
             st.session_state["roi"] = geemap.geopandas_to_ee(gdf, geodesic=False)
             m.add_gdf(gdf, "ROI")

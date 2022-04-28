@@ -3,19 +3,19 @@ import leafmap.foliumap as leafmap
 
 
 def app():
-    st.title("Streamlit for Geospatial Applications")
+    st.title("Welcome to CleanOcean")
 
     st.markdown(
         """
-        This multi-page web app demonstrates various interactive web apps created using [streamlit](https://streamlit.io) and open-source mapping libraries, 
-        such as [leafmap](https://leafmap.org), [geemap](https://geemap.org), [pydeck](https://deckgl.readthedocs.io), and [kepler.gl](https://docs.kepler.gl/docs/keplergl-jupyter).
-        This is an open-source project and you are very welcome to contribute your comments, questions, resources, and apps as [issues](https://github.com/giswqs/streamlit-geospatial/issues) or 
-        [pull requests](https://github.com/giswqs/streamlit-geospatial/pulls) to the [GitHub repository](https://github.com/giswqs/streamlit-geospatial).
+        Cette application vous permet de détecter la présence de débris dans les oceans à l'aide d'images satellites.
+        Vous pouvez choisir un satellite parmi ceux disponbiles dans la liste ou importer vos propores images.
+
 
         """
     )
 
-    st.info("Click on the left sidebar menu to navigate to the different apps.")
+    st.info("Cliquez sur le menu latéral pour naviguer entre les différents choix")
+    
 
     st.subheader("Timelapse of Satellite Imagery")
     st.markdown(
